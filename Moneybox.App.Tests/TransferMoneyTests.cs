@@ -37,7 +37,7 @@ namespace Moneybox.App.Tests
         }
 
         [Test]
-        public void GivenFromAndToAccuntsAndTransferAmount_WhenBalanceLeftIsLessThanLoFundsLimit_ThenNotifyLowFundOnUserEmail()
+        public void GivenFromAndToAccuntsAndTransferAmount_WhenBalanceLeftIsLessThanLowFundsLimit_ThenNotifyLowFundOnUserEmail()
         {
             //Arrange
             var amount = 19m;
@@ -61,8 +61,9 @@ namespace Moneybox.App.Tests
         public void GivenFromAndToAccuntsAndTransferAmount_WhenToAccountPaidInGreaterThanPaidInLimit_ThenThrowInvalidOperationException()
         {
             //Arrange
-            var fromAccount = new Account(mockNotificationService.Object);
             var amount = 200m;
+            
+            var fromAccount = new Account(mockNotificationService.Object);
             fromAccount.Balance = 1000m;
             fromAccount.Id = Guid.NewGuid();
             mockAccountRepository.Setup(x => x.GetAccountById(fromAccount.Id)).Returns(fromAccount);
