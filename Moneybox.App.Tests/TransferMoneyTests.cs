@@ -7,6 +7,7 @@ using System;
 
 namespace Moneybox.App.Tests
 {
+    [Category("Integration")]
     public class TransferMoneyTests
     {
         private Mock<INotificationService> mockNotificationService;
@@ -22,7 +23,7 @@ namespace Moneybox.App.Tests
         }
 
         [Test]
-        public void GivenFromAndToAccuntAndAmount_WhenFromAccountBalanceLessThanAmount_ThenThrowInvalidOperationException()
+        public void GivenFromAndToAccuntsAndTransferAmount_WhenFromAccountBalanceLessThanAmount_ThenThrowInvalidOperationException()
         {
             //Arrange
             var amount = 20m;
@@ -36,7 +37,7 @@ namespace Moneybox.App.Tests
         }
 
         [Test]
-        public void GivenFromAndToAccuntAndAmount_WhenBalanceLeftIsLessThanLoFundsLimit_ThenNotifyLowFundOnUserEmail()
+        public void GivenFromAndToAccuntsAndTransferAmount_WhenBalanceLeftIsLessThanLoFundsLimit_ThenNotifyLowFundOnUserEmail()
         {
             //Arrange
             var amount = 19m;
@@ -57,7 +58,7 @@ namespace Moneybox.App.Tests
         }
 
         [Test]
-        public void GivenFromAndToAccuntAndAmount_WhenToAccountPaidInGreaterThanPaidInLimit_ThenThrowInvalidOperationException()
+        public void GivenFromAndToAccuntsAndTransferAmount_WhenToAccountPaidInGreaterThanPaidInLimit_ThenThrowInvalidOperationException()
         {
             //Arrange
             var fromAccount = new Account(mockNotificationService.Object);
@@ -77,7 +78,7 @@ namespace Moneybox.App.Tests
         }
 
         [Test]
-        public void GivenFromAndToAccuntAndAmount_WhenPayInApproachesPaidInLimit_ThenNotifyUserOnEmail()
+        public void GivenFromAndToAccuntsAndTransferAmount_WhenPayInApproachesPaidInLimit_ThenNotifyUserOnEmail()
         {
             //Arrange
             var amount = 200m;
@@ -105,7 +106,7 @@ namespace Moneybox.App.Tests
         }
 
         [Test]
-        public void GivenFromAndToAccuntAndAmount_WhenSuccessfulTransfer_ThenVerifyAmountsForFromAndToAccounts()
+        public void GivenFromAndToAccuntsAndTransferAmount_WhenSuccessfulTransfer_ThenVerifyAmountsForFromAndToAccounts()
         {
             //Arrange
             var amount = 200m;
